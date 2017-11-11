@@ -64,7 +64,7 @@ authController.get("/login", (req, res, next) => {
 authController.post("/login", (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
-
+  console.log(req.body);
   if (username === "" || password === "") {
     res.render("auth/login", {
       errorMessage: "Indicate a username and a password to log in"
@@ -83,7 +83,9 @@ authController.post("/login", (req, res, next) => {
       } else {
         if (bcrypt.compareSync(password, user.password)) {
           req.session.currentUser = user;
-           // res.redirect("/tweets");
+          console.log(req.session);
+          console.log(user);
+            res.redirect("/tweets");
         } else {
           res.render("auth/login", {
             errorMessage: "Incorrect password"
