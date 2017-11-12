@@ -64,6 +64,7 @@ authController.get("/login", (req, res, next) => {
 authController.post("/login", (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
+  
   console.log(req.body);
   if (username === "" || password === "") {
     res.render("auth/login", {
